@@ -6,5 +6,10 @@ export const routes: Routes = [
     loadComponent: () =>
       import('./pagina-inicial/pagina-inicial.component')
 
+  },{
+    path: 'entrenadores',
+    loadComponent: () =>
+      import('./entrenadores-lista/entrenadores-lista.component')
+
   },
 ];
