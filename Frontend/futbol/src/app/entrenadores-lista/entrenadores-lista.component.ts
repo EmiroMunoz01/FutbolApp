@@ -6,6 +6,8 @@ import { Component } from '@angular/core';
   templateUrl: './entrenadores-lista.component.html',
   styleUrl: './entrenadores-lista.component.css'
 })
+
+
 export default class EntrenadoresListaComponent {
 
 }
