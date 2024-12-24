@@ -4,7 +4,7 @@ export const routes: Routes = [
   {
     path: '',
     loadComponent: () =>
-      import('./entrenadores-lista/entrenadores-lista.component')
-      
+      import('./pagina-inicial/pagina-inicial.component')
+
   },
 ];
