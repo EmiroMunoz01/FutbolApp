@@ -20,7 +20,7 @@
       <th>{{ entrenador.apellido }}</th>
       <th>{{ entrenador.cedula_entrenador }}</th>
       <th>{{ entrenador.nacionalidad }}</th>
-      <th>{{ entrenador.fechaCreacion }}</th>
+      <th>{{ entrenador.fechaCreacion| date: 'dd/MM/yyyy hh:mm a' }}</th>
     </tr>
 
     }

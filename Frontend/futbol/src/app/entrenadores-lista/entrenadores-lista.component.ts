@@ -1,9 +1,10 @@
 import { Component, inject, OnInit } from '@angular/core';
 import { EntrenadorService } from '../servicios/entrenador.service';
+import { DatePipe } from '@angular/common';
 
 @Component({
   selector: 'app-entrenadores-lista',
-  imports: [],
+  imports: [DatePipe],
   templateUrl: './entrenadores-lista.component.html',
   styleUrl: './entrenadores-lista.component.css',
 })
