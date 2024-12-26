@@ -1,5 +1,6 @@
 package com.example.demo.controlador;
 
+import java.time.LocalDateTime;
 import java.util.List;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -55,6 +56,8 @@ public class EntrenadorControlador {
     @PostMapping("/entrenador")
     public Entrenador crearEntrenador(
             @RequestBody Entrenador entrenador) {
+
+                entrenador.setFechaCreacion(LocalDateTime.now());
 
         return this.entrenadorServicio.guardarEntrenador(entrenador);
 
