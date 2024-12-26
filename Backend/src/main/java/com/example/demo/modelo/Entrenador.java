@@ -1,5 +1,8 @@
 package com.example.demo.modelo;
 
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -51,5 +54,10 @@ public class Entrenador {
     @Size(min = 3, message = "whatever")
     @Column(name = "nacionalidad")
     private String nacionalidad;
+
+
+
+    @Column(name = "fecha_creacion")
+    private LocalDateTime fechaCreacion;
 
 }

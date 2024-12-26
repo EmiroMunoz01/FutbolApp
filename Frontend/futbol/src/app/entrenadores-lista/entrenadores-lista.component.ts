@@ -10,9 +10,11 @@ import { EntrenadorService } from '../servicios/entrenador.service';
 export default class EntrenadoresListaComponent implements OnInit {
   private entrenadorService = inject(EntrenadorService);
 
+  entrenadoresArray:any = [];
+
   ngOnInit(): void {
-    this.entrenadorService.listar().subscribe((entrenadores) => {
-      console.log(entrenadores);
+    this.entrenadorService.listar().subscribe((entrenadores: any) => {
+      this.entrenadoresArray = entrenadores;
     });
   }
 }

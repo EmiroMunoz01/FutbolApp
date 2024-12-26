@@ -1,1 +1,28 @@
-<p>entrenadores-lista works!</p>
+<h2>Entrenadores</h2>
+
+<table>
+  <thead>
+    <tr>
+      <th>ID</th>
+      <th>Nombre</th>
+      <th>Apellido</th>
+      <th>Edad Entrenador</th>
+      <th>Nacionalidad</th>
+      <th>Fecha de Creación</th>
+    </tr>
+  </thead>
+  <tbody>
+    @for(entrenador of entrenadoresArray; track entrenador.id){
+
+    <tr>
+      <th>{{ entrenador.id }}</th>
+      <th>{{ entrenador.nombre }}</th>
+      <th>{{ entrenador.apellido }}</th>
+      <th>{{ entrenador.cedula_entrenador }}</th>
+      <th>{{ entrenador.nacionalidad }}</th>
+      <th>{{ entrenador.fechaCreacion }}</th>
+    </tr>
+
+    }
+  </tbody>
+</table>
