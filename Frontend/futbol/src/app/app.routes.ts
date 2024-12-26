@@ -11,5 +11,10 @@ export const routes: Routes = [
     loadComponent: () =>
       import('./entrenadores-lista/entrenadores-lista.component')
 
-  },
+  },{
+    path: 'entrenadores/formulario/crear',
+    loadComponent: () =>
+      import('./entrenador-formulario/entrenador-formulario.component')
+
+  }
 ];
