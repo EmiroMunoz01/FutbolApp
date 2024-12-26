@@ -1,5 +1,9 @@
 <h2 class="mb-5">Entrenadores</h2>
 
+<div class="text-end">
+  <button class="btn btn-primary" routerLink="/entrenadores/nuevo">Nuevo Entrenador</button>
+</div>
+
 <table class="table table-hover">
   <thead>
     <tr>
@@ -20,7 +24,7 @@
       <th>{{ entrenador.apellido }}</th>
       <th>{{ entrenador.cedula_entrenador }}</th>
       <th>{{ entrenador.nacionalidad }}</th>
-      <th>{{ entrenador.fechaCreacion| date: 'dd/MM/yyyy hh:mm a' }}</th>
+      <th>{{ entrenador.fechaCreacion | date : "dd/MM/yyyy hh:mm a" }}</th>
     </tr>
 
     }

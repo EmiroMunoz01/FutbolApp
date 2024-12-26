@@ -12,7 +12,7 @@ export const routes: Routes = [
       import('./entrenadores-lista/entrenadores-lista.component')
 
   },{
-    path: 'entrenadores/formulario/crear',
+    path: 'entrenadores/nuevo',
     loadComponent: () =>
       import('./entrenador-formulario/entrenador-formulario.component')
 
