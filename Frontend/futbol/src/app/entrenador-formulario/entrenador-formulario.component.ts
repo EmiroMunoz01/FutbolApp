@@ -20,7 +20,7 @@ export default class EntrenadorFormularioComponent implements OnInit{
 
 
   ngOnInit(): void {
-      
+      this.route.snapshot.paramMap.get('id')
   }
 
 
