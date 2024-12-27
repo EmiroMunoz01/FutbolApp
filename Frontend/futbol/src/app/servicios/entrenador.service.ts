@@ -22,14 +22,14 @@ export class EntrenadorService {
     );
   }
 
-  crear(entrenador: any) {
+  crear(entrenador: Entrenador) {
     return this.http.post<Entrenador>(
       'http://localhost:8080/app-futbol/entrenador',
       entrenador
     );
   }
 
-  actualizar(id: number, entrenador: any) {
+  actualizar(id: number, entrenador: Entrenador) {
     return this.http.put<Entrenador>(
       `http://localhost:8080/app-futbol/entrenador/${id}`,
       entrenador

@@ -65,11 +65,20 @@ export default class EntrenadorFormularioComponent implements OnInit {
     }
   }
 
-  crear() {
-    const entrenador = this.form!.value;
+  guardar() {
+    const entrenadorFormulario = this.form!.value;
     //llamaremos el servicio
-    this.entrenadorServicio.crear(entrenador).subscribe(() => {
-      this.router.navigate(['/entrenadores']);
-    });
+
+    if (this.entrenadorValidador) {
+      this.entrenadorServicio
+        .actualizar(this.entrenadorValidador.id, entrenadorFormulario)
+        .subscribe(() => {
+          this.router.navigate(['/entrenadores']);
+        });
+    } else {
+      this.entrenadorServicio.crear(entrenadorFormulario).subscribe(() => {
+        this.router.navigate(['/entrenadores']);
+      });
+    }
   }
 }
