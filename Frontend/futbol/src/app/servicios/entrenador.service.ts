@@ -11,11 +11,15 @@ export class EntrenadorService {
 
   //crearemos las funciones
   listar() {
-    return this.http.get<Entrenador[]>('http://localhost:8080/app-futbol/entrenador');
+    return this.http.get<Entrenador[]>(
+      'http://localhost:8080/app-futbol/entrenador'
+    );
   }
 
   obtener(id: number) {
-    return this.http.get<Entrenador>(`http://localhost:8080/app-futbol/entrenador/${id}`);
+    return this.http.get<Entrenador>(
+      `http://localhost:8080/app-futbol/entrenador/${id}`
+    );
   }
 
   crear(entrenador: any) {
@@ -25,9 +29,11 @@ export class EntrenadorService {
     );
   }
 
-
-  actualizar(id: number,entrenador: any) {
-    return this.http.put<Entrenador>(`http://localhost:8080/app-futbol/entrenador/${id}`, entrenador);
+  actualizar(id: number, entrenador: any) {
+    return this.http.put<Entrenador>(
+      `http://localhost:8080/app-futbol/entrenador/${id}`,
+      entrenador
+    );
   }
 
   eliminar(id: number) {

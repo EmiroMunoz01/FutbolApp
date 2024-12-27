@@ -7,5 +7,5 @@ export interface Entrenador {
   edad_entrenador: number;
   cedula_entrenador: number;
   nacionalidad: string;
-  fecha_creacion: string;
+  fechaCreacion: string;
 }

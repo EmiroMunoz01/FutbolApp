@@ -57,7 +57,7 @@ public class EntrenadorControlador {
     public Entrenador crearEntrenador(
             @RequestBody Entrenador entrenador) {
 
-                entrenador.setFechaCreacion(LocalDateTime.now());
+        entrenador.setFechaCreacion(LocalDateTime.now());
 
         return this.entrenadorServicio.guardarEntrenador(entrenador);
 
