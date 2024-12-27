@@ -21,26 +21,28 @@
         placeholder="Apellido"
         class="form-control"
         formControlName="apellido"
-
       />
     </div>
 
-
-
     <div class="mb-3">
-      <label for="edad">Edad</label>
-      <input id="edad" type="number" placeholder="Edad" class="form-control"
-      formControlName="edad" />
+      <label for="edad_entrenador">Edad</label>
+      <input
+        id="edad_entrenador"
+        type="number"
+        placeholder="Edad"
+        class="form-control"
+        formControlName="edad_entrenador"
+      />
     </div>
 
     <div class="mb-3">
-      <label for="cedula">Cedula</label>
+      <label for="cedula_entrenador">Cedula</label>
       <input
-        id="cedula"
+        id="cedula_entrenador"
         type="number"
         placeholder="Cedula"
         class="form-control"
-        formControlName="cedula"
+        formControlName="cedula_entrenador"
       />
     </div>
 
@@ -55,8 +57,12 @@
       />
     </div>
 
-    <button  class="btn btn-primary ms-2">Crear Entrenador</button>
-    <button type="button" class="btn btn-warning ms-2" routerLink="/entrenadores">
+    <button class="btn btn-primary ms-2">Crear Entrenador</button>
+    <button
+      type="button"
+      class="btn btn-warning ms-2"
+      routerLink="/entrenadores"
+    >
       Cancelar
     </button>
   </form>
