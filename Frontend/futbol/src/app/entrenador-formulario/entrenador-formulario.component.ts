@@ -33,8 +33,7 @@ export default class EntrenadorFormularioComponent implements OnInit {
   // });
 
   form?: FormGroup;
-  entrenadorValidador?:Entrenador;
-
+  entrenadorValidador?: Entrenador;
 
   ngOnInit(): void {
     const id = this.route.snapshot.paramMap.get('id');
@@ -42,9 +41,7 @@ export default class EntrenadorFormularioComponent implements OnInit {
     //usaremos estos datos para inicializar el formulario
     if (id) {
       this.entrenadorServicio.obtener(parseInt(id)).subscribe((entrenador) => {
-
-
-        this.entrenadorValidador=  entrenador;
+        this.entrenadorValidador = entrenador;
 
         this.form = this.fb.group({
           nombre: [entrenador.nombre, [Validators.required]],
@@ -58,7 +55,7 @@ export default class EntrenadorFormularioComponent implements OnInit {
         });
       });
     } else {
-      this.fb.group({
+      this.form = this.fb.group({
         nombre: ['', [Validators.required]],
         apellido: ['', [Validators.required]],
         edad_entrenador: ['', [Validators.required]],
