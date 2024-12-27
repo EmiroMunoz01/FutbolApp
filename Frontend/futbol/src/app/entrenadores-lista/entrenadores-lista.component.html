@@ -33,17 +33,10 @@
       <td>
         <div class="btn-group">
           <button class="btn btn-warning"
-
-
           [routerLink]="[entrenador.id, 'actualizar']"
-
-
           >
           Editar</button>
-
-
-
-          <button class="btn btn-danger">Eliminar</button>
+          <button class="btn btn-danger" (click)="eliminarEntrenador(entrenador)">Eliminar</button>
         </div>
       </td>
     </tr>

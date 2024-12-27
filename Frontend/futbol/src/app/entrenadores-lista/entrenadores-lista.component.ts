@@ -16,9 +16,18 @@ export default class EntrenadoresListaComponent implements OnInit {
   entrenadoresArray: Entrenador[] = [];
 
   ngOnInit(): void {
-    this.entrenadorService.listar()
-    .subscribe(entrenadores => {
+    this.cargarTodo();
+  }
+
+  cargarTodo() {
+    this.entrenadorService.listar().subscribe((entrenadores) => {
       this.entrenadoresArray = entrenadores;
+    });
+  }
+
+  eliminarEntrenador(entrenador: Entrenador) {
+    this.entrenadorService.eliminar(entrenador.id).subscribe(() => {
+      this.cargarTodo();
     });
   }
 }
