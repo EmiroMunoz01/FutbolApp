@@ -9,7 +9,7 @@ import { EntrenadorService } from '../servicios/entrenador.service';
   templateUrl: './entrenador-formulario.component.html',
   styleUrl: './entrenador-formulario.component.css',
 })
-export default class EntrenadorFormularioComponent implements OnInit{
+export default class EntrenadorFormularioComponent implements OnInit {
   //inyectamos el formulario
   private fb = inject(FormBuilder);
   //inyectamos el servicio, por medio de la inyeccion de dependencias
@@ -18,13 +18,15 @@ export default class EntrenadorFormularioComponent implements OnInit{
   private router = inject(Router);
   private route = inject(ActivatedRoute);
 
-
   ngOnInit(): void {
-      const id = this.route.snapshot.paramMap.get('id')
-      console.log("id", id);
+    const id = this.route.snapshot.paramMap.get('id');
+
+    if (id) {
+      this.entrenadorServicio
+        .obtener(parseInt(id))
+        .subscribe((entrenador) => console.log('c', entrenador));
+    }
   }
-
-
 
   form = this.fb.group({
     nombre: ['', [Validators.required]],
@@ -33,7 +35,6 @@ export default class EntrenadorFormularioComponent implements OnInit{
     cedula_entrenador: ['', [Validators.required]],
     nacionalidad: ['', [Validators.required]],
   });
-
 
   crear() {
     const entrenador = this.form.value;
