@@ -1,6 +1,6 @@
-import { Component, inject } from '@angular/core';
+import { Component, inject, OnInit } from '@angular/core';
 import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
-import { Router, RouterModule } from '@angular/router';
+import { ActivatedRoute, Router, RouterModule } from '@angular/router';
 import { EntrenadorService } from '../servicios/entrenador.service';
 
 @Component({
@@ -9,13 +9,21 @@ import { EntrenadorService } from '../servicios/entrenador.service';
   templateUrl: './entrenador-formulario.component.html',
   styleUrl: './entrenador-formulario.component.css',
 })
-export default class EntrenadorFormularioComponent {
+export default class EntrenadorFormularioComponent implements OnInit{
   //inyectamos el formulario
   private fb = inject(FormBuilder);
   //inyectamos el servicio, por medio de la inyeccion de dependencias
   private entrenadorServicio = inject(EntrenadorService);
 
   private router = inject(Router);
+  private route = inject(ActivatedRoute);
+
+
+  ngOnInit(): void {
+      
+  }
+
+
 
   form = this.fb.group({
     nombre: ['', [Validators.required]],
@@ -25,7 +33,6 @@ export default class EntrenadorFormularioComponent {
     nacionalidad: ['', [Validators.required]],
   });
 
-  //
 
   crear() {
     const entrenador = this.form.value;
