@@ -16,6 +16,7 @@
       <th>Cedula</th>
       <th>Nacionalidad</th>
       <th>Fecha de Creación</th>
+      <th></th>
     </tr>
   </thead>
   <tbody>
@@ -29,6 +30,22 @@
       <th>{{ entrenador.cedula_entrenador }}</th>
       <th>{{ entrenador.nacionalidad }}</th>
       <th>{{ entrenador.fechaCreacion | date : "dd/MM/yyyy hh:mm a" }}</th>
+      <td>
+        <div class="btn-group">
+          <button class="btn btn-warning"
+
+
+          [routerLink]="[entrenador.id, 'actualizar']"
+
+
+          >
+          Editar</button>
+
+
+
+          <button class="btn btn-danger">Eliminar</button>
+        </div>
+      </td>
     </tr>
 
     }

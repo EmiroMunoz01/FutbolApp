@@ -16,5 +16,10 @@ export const routes: Routes = [
     loadComponent: () =>
       import('./entrenador-formulario/entrenador-formulario.component')
 
-  }
+  },{
+    path: 'entrenadores/:id/actualizar',
+    loadComponent: () =>
+      import('./entrenador-formulario/entrenador-formulario.component')
+
+  },
 ];
