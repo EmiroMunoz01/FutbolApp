@@ -1,4 +1,6 @@
-<h2 class="mb-5">Nuevo Contacto</h2>
+<h2 class="mb-5">
+  @if (entrenadorValidador) { Editar }@else{ Nuevo } Entrenador
+</h2>
 
 <div class="row row-cols-3 justify-content-center">
   @if (form) {
@@ -58,7 +60,9 @@
       />
     </div>
 
-    <button class="btn btn-primary ms-2">Crear Entrenador</button>
+    <button class="btn btn-primary ms-2">
+      @if (entrenadorValidador) { Actualizar }@else{ Crear } Entrenador
+    </button>
     <button
       type="button"
       class="btn btn-warning ms-2"

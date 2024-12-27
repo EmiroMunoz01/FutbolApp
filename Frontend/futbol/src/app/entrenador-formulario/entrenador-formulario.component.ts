@@ -7,6 +7,7 @@ import {
 } from '@angular/forms';
 import { ActivatedRoute, Router, RouterModule } from '@angular/router';
 import { EntrenadorService } from '../servicios/entrenador.service';
+import { Entrenador } from '../modelo/entrenador.interface';
 
 @Component({
   selector: 'app-entrenador-formulario',
@@ -32,6 +33,8 @@ export default class EntrenadorFormularioComponent implements OnInit {
   // });
 
   form?: FormGroup;
+  entrenadorValidador?:Entrenador;
+
 
   ngOnInit(): void {
     const id = this.route.snapshot.paramMap.get('id');
@@ -39,6 +42,10 @@ export default class EntrenadorFormularioComponent implements OnInit {
     //usaremos estos datos para inicializar el formulario
     if (id) {
       this.entrenadorServicio.obtener(parseInt(id)).subscribe((entrenador) => {
+
+
+        this.entrenadorValidador=  entrenador;
+
         this.form = this.fb.group({
           nombre: [entrenador.nombre, [Validators.required]],
           apellido: [entrenador.apellido, [Validators.required]],
