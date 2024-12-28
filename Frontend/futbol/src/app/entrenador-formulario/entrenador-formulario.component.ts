@@ -66,6 +66,10 @@ export default class EntrenadorFormularioComponent implements OnInit {
   }
 
   guardar() {
+    if (this.form?.invalid) {
+      return;
+    }
+
     const entrenadorFormulario = this.form!.value;
     //llamaremos el servicio
 
