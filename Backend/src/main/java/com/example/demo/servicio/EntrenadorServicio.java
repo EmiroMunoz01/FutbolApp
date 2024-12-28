@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.example.demo.dto.EntrenadorDTO;
+import com.example.demo.exencion.RecursoNoEncontradoExencion;
 import com.example.demo.modelo.Entrenador;
 import com.example.demo.repositorio.EntrenadorRepositorio;
 
@@ -23,7 +24,8 @@ public class EntrenadorServicio implements IEntrenador {
 
     @Override
     public Entrenador buscarEntrenadorId(Integer idEntrenador) {
-        Entrenador entrenador = this.entrenadorRepositorio.findById(idEntrenador).orElse(null);
+        Entrenador entrenador = this.entrenadorRepositorio.findById(idEntrenador)
+                .orElseThrow(RecursoNoEncontradoExencion::new);
         return entrenador;
     }
 
@@ -50,7 +52,7 @@ public class EntrenadorServicio implements IEntrenador {
     @Override
     public Entrenador actualizarEntrenador(Integer id, EntrenadorDTO entrenadorDTO) {
 
-        Entrenador entrenadorBaseDatos = this.entrenadorRepositorio.findById(id).orElse(null);
+        Entrenador entrenadorBaseDatos = this.entrenadorRepositorio.findById(id).orElseThrow(RecursoNoEncontradoExencion::new);
         entrenadorBaseDatos.setNombre(entrenadorDTO.getNombre());
         entrenadorBaseDatos.setApellido(entrenadorDTO.getApellido());
         entrenadorBaseDatos.setEdad_entrenador(entrenadorDTO.getEdad_entrenador());
