@@ -1,10 +1,12 @@
 package com.example.demo.servicio;
 
+import java.time.LocalDateTime;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.example.demo.dto.EntrenadorDTO;
 import com.example.demo.modelo.Entrenador;
 import com.example.demo.repositorio.EntrenadorRepositorio;
 
@@ -16,7 +18,7 @@ public class EntrenadorServicio implements IEntrenador {
 
     @Override
     public List<Entrenador> listarEntrenador() {
-        return this.entrenadorRepositorio.findAll();
+        return (List<Entrenador>) this.entrenadorRepositorio.findAll();
     }
 
     @Override
@@ -26,7 +28,17 @@ public class EntrenadorServicio implements IEntrenador {
     }
 
     @Override
-    public Entrenador guardarEntrenador(Entrenador entrenador) {
+    public Entrenador guardarEntrenador(EntrenadorDTO entrenadorDTO) {
+
+        Entrenador entrenador = new Entrenador();
+
+        entrenador.setNombre(entrenadorDTO.getNombre());
+        entrenador.setApellido(entrenadorDTO.getApellido());
+        entrenador.setEdad_entrenador(entrenadorDTO.getEdad_entrenador());
+        entrenador.setCedula_entrenador(entrenadorDTO.getCedula_entrenador());
+        entrenador.setNacionalidad(entrenadorDTO.getNacionalidad());
+        entrenador.setFechaCreacion(LocalDateTime.now());
+
         return this.entrenadorRepositorio.save(entrenador);
     }
 
@@ -36,8 +48,15 @@ public class EntrenadorServicio implements IEntrenador {
     }
 
     @Override
-    public void actualizarEntrenador(Entrenador entrenador) {
-        this.entrenadorRepositorio.save(entrenador);
+    public Entrenador actualizarEntrenador(Integer id, EntrenadorDTO entrenadorDTO) {
+
+        Entrenador entrenadorBaseDatos = this.entrenadorRepositorio.findById(id).orElse(null);
+        entrenadorBaseDatos.setNombre(entrenadorDTO.getNombre());
+        entrenadorBaseDatos.setApellido(entrenadorDTO.getApellido());
+        entrenadorBaseDatos.setEdad_entrenador(entrenadorDTO.getEdad_entrenador());
+        entrenadorBaseDatos.setCedula_entrenador(entrenadorDTO.getCedula_entrenador());
+        entrenadorBaseDatos.setNacionalidad(entrenadorDTO.getNacionalidad());
+        return this.entrenadorRepositorio.save(entrenadorBaseDatos);
     }
 
 }

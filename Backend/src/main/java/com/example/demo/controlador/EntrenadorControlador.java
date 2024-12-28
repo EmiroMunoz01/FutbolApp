@@ -16,6 +16,8 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+
+import com.example.demo.dto.EntrenadorDTO;
 import com.example.demo.modelo.Entrenador;
 import com.example.demo.servicio.EntrenadorServicio;
 
@@ -55,35 +57,17 @@ public class EntrenadorControlador {
 
     @PostMapping("/entrenador")
     public Entrenador crearEntrenador(
-            @RequestBody Entrenador entrenador) {
+            @RequestBody EntrenadorDTO entrenadorDTO) {
 
-        entrenador.setFechaCreacion(LocalDateTime.now());
-
-        return this.entrenadorServicio.guardarEntrenador(entrenador);
-
+        return entrenadorServicio.guardarEntrenador(entrenadorDTO);
     }
 
     @PutMapping("/entrenador/{id}")
-    public ResponseEntity<?> actualizarEntrenador(@PathVariable Integer id,
-            @RequestBody Entrenador entrenadorActualizado) {
+    public Entrenador actualizarEntrenador(@PathVariable Integer id,
+            @RequestBody EntrenadorDTO entrenadorDTO) {
 
-        try {
-            Entrenador entrenadorExistentente = entrenadorServicio.buscarEntrenadorId(id);
+        return entrenadorServicio.actualizarEntrenador(id, entrenadorDTO);
 
-            if (entrenadorExistentente != null) {
-                entrenadorExistentente.setNombre(entrenadorActualizado.getNombre());
-                entrenadorExistentente.setApellido(entrenadorActualizado.getApellido());
-                entrenadorExistentente.setEdad_entrenador(entrenadorActualizado.getEdad_entrenador());
-                entrenadorExistentente.setCedula_entrenador(entrenadorActualizado.getCedula_entrenador());
-                entrenadorExistentente.setNacionalidad(entrenadorActualizado.getNacionalidad());
-                entrenadorServicio.guardarEntrenador(entrenadorExistentente);
-                return ResponseEntity.ok(entrenadorExistentente);
-            } else {
-                return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Entrenador no encontrado.");
-            }
-        } catch (Exception e) {
-            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Error al actualizar el entrenador.");
-        }
     }
 
 }
