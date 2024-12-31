@@ -14,6 +14,13 @@
         class="form-control"
         formControlName="nombre"
       />
+
+      @if(form.get('nombre')?.hasError('required')){
+      <p class="invalid-feedback d-block">
+        El nombre es obligatorio, minimo de 3 caracteres.
+      </p>
+
+      }
     </div>
 
     <div class="mb-3">
@@ -25,6 +32,12 @@
         class="form-control"
         formControlName="apellido"
       />
+      @if(form.get('apellido')?.hasError('required')){
+      <p class="invalid-feedback d-block">
+        El apellido es obligatorio, minimo de 3 caracteres.
+      </p>
+
+      }
     </div>
 
     <div class="mb-3">
@@ -36,6 +49,12 @@
         class="form-control"
         formControlName="edad_entrenador"
       />
+      @if(form.get('nombre')?.hasError('required')){
+      <p class="invalid-feedback d-block">
+        La edad es obligatoria, maximo 99 años.
+      </p>
+
+      }
     </div>
 
     <div class="mb-3">
@@ -47,6 +66,12 @@
         class="form-control"
         formControlName="cedula_entrenador"
       />
+      @if(form.get('nombre')?.hasError('required')){
+      <p class="invalid-feedback d-block">
+        La cedula es obligatoria, minimo 6 digitos.
+      </p>
+
+      }
     </div>
 
     <div class="mb-3">
@@ -58,6 +83,13 @@
         class="form-control"
         formControlName="nacionalidad"
       />
+
+      @if(form.get('nombre')?.hasError('required')){
+      <p class="invalid-feedback d-block">
+        La nacionalidad es obligatoria, minimo de 3 caracteres.
+      </p>
+
+      }
     </div>
 
     <button class="btn btn-primary ms-2">

@@ -71,7 +71,6 @@ export default class EntrenadorFormularioComponent implements OnInit {
     }
 
     const entrenadorFormulario = this.form!.value;
-    //llamaremos el servicio
 
     if (this.entrenadorValidador) {
       this.entrenadorServicio
