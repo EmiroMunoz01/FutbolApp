@@ -27,14 +27,11 @@ public class EntrenadorControlador {
     @Autowired
     private EntrenadorServicio entrenadorServicio;
 
-
     @GetMapping("/entrenador/{id}")
     public Entrenador encontrarPorId(@PathVariable Integer id) {
         return entrenadorServicio.buscarEntrenadorId(id);
 
     }
-
-    
 
     @GetMapping("/entrenador")
     public List<Entrenador> listarEntrenador() {
@@ -57,7 +54,7 @@ public class EntrenadorControlador {
     @PostMapping("/entrenador")
     public Entrenador crearEntrenador(
             @RequestBody EntrenadorDTO entrenadorDTO) {
-
+                
         return entrenadorServicio.guardarEntrenador(entrenadorDTO);
     }
 

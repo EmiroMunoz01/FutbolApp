@@ -53,6 +53,7 @@ public class EntrenadorServicio implements IEntrenador {
     public Entrenador actualizarEntrenador(Integer id, EntrenadorDTO entrenadorDTO) {
 
         Entrenador entrenadorBaseDatos = this.entrenadorRepositorio.findById(id).orElseThrow(RecursoNoEncontradoExencion::new);
+        
         entrenadorBaseDatos.setNombre(entrenadorDTO.getNombre());
         entrenadorBaseDatos.setApellido(entrenadorDTO.getApellido());
         entrenadorBaseDatos.setEdad_entrenador(entrenadorDTO.getEdad_entrenador());

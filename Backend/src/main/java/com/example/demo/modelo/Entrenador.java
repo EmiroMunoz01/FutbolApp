@@ -1,6 +1,5 @@
 package com.example.demo.modelo;
 
-import java.time.LocalDate;
 import java.time.LocalDateTime;
 
 import jakarta.persistence.Column;

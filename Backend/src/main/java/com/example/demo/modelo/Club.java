@@ -1,5 +1,6 @@
 package com.example.demo.modelo;
 
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -10,7 +11,6 @@ import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.JoinColumn;
 
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.OneToOne;
@@ -42,11 +42,17 @@ public class Club {
     @Column(name = "nombre", unique = true, columnDefinition = "VARCHAR(300)", nullable = false)
     private String nombre;
 
+    @NotEmpty
+    @Size(min = 3)
+    @Column(name = "pais_origen", unique = true, columnDefinition = "VARCHAR(300)", nullable = false)
+    private String paisOrigen;
+
+    @Column(name = "fecha_creacion_sistema")
+    private LocalDateTime fechaCreacionSistema;
+
     @OneToOne(targetEntity = Entrenador.class, cascade = CascadeType.PERSIST)
     private Entrenador entrenador;
 
-
-    
     @OneToMany(targetEntity = Jugador.class, fetch = FetchType.LAZY, mappedBy = "club")
     private List<Jugador> jugadores = new ArrayList<>();
 

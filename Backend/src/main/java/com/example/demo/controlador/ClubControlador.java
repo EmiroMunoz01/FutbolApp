@@ -5,21 +5,23 @@ import java.util.List;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.example.demo.dto.ClubDTO;
 import com.example.demo.modelo.Club;
 import com.example.demo.servicio.ClubServicio;
 
 @RestController
 @RequestMapping("app-futbol")
+@CrossOrigin(value = "http://localhost:4200")
 public class ClubControlador {
 
     private final Logger LOGGER = LoggerFactory.getLogger(ClubControlador.class);
@@ -35,7 +37,7 @@ public class ClubControlador {
 
     @GetMapping("/club")
     public List<Club> listarClub() {
-        return clubServicio.listarClub();
+        return clubServicio.listarClubes();
     }
 
     @DeleteMapping("/club/{id}")
@@ -51,23 +53,18 @@ public class ClubControlador {
 
     }
 
-    // @PostMapping("/club")
-    // public ResponseEntity<?> crearClub(
-    //         @RequestBody Club ClubB) {
+    @PostMapping("/entrenador")
+    public Club crearEntrenador(
+            @RequestBody ClubDTO clubDTO) {
 
-    //     // agregar validacion para verificar que el usuario no se repita
+        return clubServicio.guardarClub(clubDTO);
+    }
 
-    //     try {
-    //         Club club = new Club();
-    //         club.setNombre(ClubB.getNombre());
-    //         club.setEntrenador(ClubB.getEntrenador());
-    //         LOGGER.info("Se ha creado exitosamente el usuario {}", ClubB);
-    //         return ResponseEntity.ok(clubServicio.guardarClub(club));
+    @PutMapping("/entrenador/{id}")
+    public Club actualizarClub(@PathVariable Integer id,
+            @RequestBody ClubDTO clubDTO) {
 
-    //     } catch (Exception e) {
-    //         LOGGER.info("Error al intentar crear el usuario {}", ClubB);
-    //         return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Error al intentar crear un club.");
-    //     }
+        return clubServicio.actualizarClub(id, clubDTO);
 
-    // }
+    }
 }
