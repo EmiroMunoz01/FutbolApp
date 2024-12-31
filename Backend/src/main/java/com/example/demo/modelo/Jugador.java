@@ -5,6 +5,7 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 import jakarta.validation.constraints.Max;
 import jakarta.validation.constraints.Min;
@@ -52,5 +53,9 @@ public class Jugador {
     @Max(3)
     @Column(name = "posicion", unique = true)
     private String posicion;
+
+
+    @ManyToOne(targetEntity = Club.class)
+    private Club club;
 
 }

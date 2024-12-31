@@ -1,7 +1,9 @@
 package com.example.demo.modelo;
 
+import java.util.ArrayList;
 import java.util.List;
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
@@ -37,14 +39,15 @@ public class Club {
 
     @NotEmpty
     @Size(min = 3)
-    @Column(name = "nombre", unique = true)
+    @Column(name = "nombre", unique = true, columnDefinition = "VARCHAR(300)", nullable = false)
     private String nombre;
 
-    @OneToOne
+    @OneToOne(targetEntity = Entrenador.class, cascade = CascadeType.PERSIST)
     private Entrenador entrenador;
 
-    @OneToMany(targetEntity = Jugador.class, fetch = FetchType.LAZY)
-    private List<Jugador> jugadores;
 
+    
+    @OneToMany(targetEntity = Jugador.class, fetch = FetchType.LAZY, mappedBy = "club")
+    private List<Jugador> jugadores = new ArrayList<>();
 
 }

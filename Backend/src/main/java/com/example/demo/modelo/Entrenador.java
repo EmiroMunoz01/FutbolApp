@@ -55,7 +55,6 @@ public class Entrenador {
     @Column(name = "nacionalidad")
     private String nacionalidad;
 
-
     @Column(name = "fecha_creacion")
     private LocalDateTime fechaCreacion;
 

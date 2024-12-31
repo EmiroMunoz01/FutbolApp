@@ -16,7 +16,7 @@ public class ClubServicio implements IClub {
 
     @Override
     public List<Club> listarClub() {
-        return this.clubRepositorio.findAll();
+        return (List<Club>) this.clubRepositorio.findAll();
     }
 
     @Override
