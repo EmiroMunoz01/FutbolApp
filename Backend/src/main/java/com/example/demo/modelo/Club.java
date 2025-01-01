@@ -44,7 +44,7 @@ public class Club {
 
     @NotEmpty
     @Size(min = 3)
-    @Column(name = "pais_origen", unique = true, columnDefinition = "VARCHAR(300)", nullable = false)
+    @Column(name = "pais_origen")
     private String paisOrigen;
 
     @Column(name = "fecha_creacion_sistema")

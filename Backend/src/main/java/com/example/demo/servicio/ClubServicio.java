@@ -30,13 +30,14 @@ public class ClubServicio implements IClub {
     }
 
     @Override
-    public Club guardarClub(ClubDTO clubDTO) {
+    public Club guardarClub(Club club) {
 
-        Club club = new Club();
+        // Club clubBD = new Club();
 
-        club.setNombre(clubDTO.getNombre());
-        club.setPaisOrigen(clubDTO.getPaisOrigen());
-        club.setJugadores(clubDTO.getJugadores());
+        // clubBD.setNombre(club.getNombre());
+        // clubBD.setPaisOrigen(club.getPaisOrigen());
+        // clubBD.setJugadores(club.getJugadores());
+        // clubBD.setEntrenador(club.getEntrenador());
         club.setFechaCreacionSistema(LocalDateTime.now());
 
        return this.clubRepositorio.save(club);
@@ -48,12 +49,12 @@ public class ClubServicio implements IClub {
     }
 
     @Override
-    public Club actualizarClub(Integer id, ClubDTO clubDTO) {
+    public Club actualizarClub(Integer id, Club club) {
 
         Club clubBaseDatos = this.clubRepositorio.findById(id).orElseThrow(RecursoNoEncontradoExencion::new);
 
-        clubBaseDatos.setNombre(clubDTO.getNombre());
-        clubBaseDatos.setPaisOrigen(clubDTO.getPaisOrigen());
+        clubBaseDatos.setNombre(club.getNombre());
+        clubBaseDatos.setPaisOrigen(club.getPaisOrigen());
 
         return this.clubRepositorio.save(clubBaseDatos);
     }

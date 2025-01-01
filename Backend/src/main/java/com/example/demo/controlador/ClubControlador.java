@@ -53,18 +53,17 @@ public class ClubControlador {
 
     }
 
-    @PostMapping("/entrenador")
+    @PostMapping("/club")
     public Club crearEntrenador(
-            @RequestBody ClubDTO clubDTO) {
-
-        return clubServicio.guardarClub(clubDTO);
+            @RequestBody Club club) {
+        return clubServicio.guardarClub(club);
     }
 
-    @PutMapping("/entrenador/{id}")
+    @PutMapping("/club/{id}")
     public Club actualizarClub(@PathVariable Integer id,
-            @RequestBody ClubDTO clubDTO) {
+            @RequestBody Club club) {
 
-        return clubServicio.actualizarClub(id, clubDTO);
+        return clubServicio.actualizarClub(id, club);
 
     }
 }
