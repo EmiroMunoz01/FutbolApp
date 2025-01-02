@@ -6,6 +6,6 @@ import { Component } from '@angular/core';
   templateUrl: './club-formulario.component.html',
   styleUrl: './club-formulario.component.css'
 })
-export class ClubFormularioComponent {
+export default class ClubFormularioComponent {
 
 }

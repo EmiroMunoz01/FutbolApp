@@ -39,11 +39,10 @@ public class Club {
 
     @NotEmpty
     @Size(min = 3)
-    @Column(name = "nombre", unique = true, columnDefinition = "VARCHAR(300)", nullable = false)
+    @Column(name = "nombre" )
     private String nombre;
 
-    @NotEmpty
-    @Size(min = 3)
+   
     @Column(name = "pais_origen")
     private String paisOrigen;
 

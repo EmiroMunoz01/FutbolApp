@@ -2,7 +2,6 @@ package com.example.demo.servicio;
 
 import java.util.List;
 
-import com.example.demo.dto.EntrenadorDTO;
 import com.example.demo.modelo.Entrenador;
 
 public interface IEntrenador {
@@ -11,10 +10,12 @@ public interface IEntrenador {
 
     public Entrenador buscarEntrenadorId(Integer idEntrenador);
 
-    public Entrenador guardarEntrenador(EntrenadorDTO entrenador);
+    public Entrenador guardarEntrenador(Entrenador entrenador);
 
     public void eliminarEntrenadorPorId(Integer idEntrenador);
 
-    public Entrenador actualizarEntrenador(Integer id, EntrenadorDTO entrenador);
+    public void eliminarTodosEntrenadores();
+
+    public Entrenador actualizarEntrenador(Integer id, Entrenador entrenador);
 
 }

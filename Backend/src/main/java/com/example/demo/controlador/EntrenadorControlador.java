@@ -51,18 +51,26 @@ public class EntrenadorControlador {
 
     }
 
+
+    @DeleteMapping("/entrenadoresfuera")
+    public void eliminarTodo() {
+        entrenadorServicio.eliminarTodosEntrenadores();
+        
+
+    }
+
     @PostMapping("/entrenador")
     public Entrenador crearEntrenador(
-            @RequestBody EntrenadorDTO entrenadorDTO) {
+            @RequestBody Entrenador entrenador) {
                 
-        return entrenadorServicio.guardarEntrenador(entrenadorDTO);
+        return entrenadorServicio.guardarEntrenador(entrenador);
     }
 
     @PutMapping("/entrenador/{id}")
     public Entrenador actualizarEntrenador(@PathVariable Integer id,
-            @RequestBody EntrenadorDTO entrenadorDTO) {
+            @RequestBody Entrenador entrenador) {
 
-        return entrenadorServicio.actualizarEntrenador(id, entrenadorDTO);
+        return entrenadorServicio.actualizarEntrenador(id, entrenador);
 
     }
 

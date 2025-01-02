@@ -47,7 +47,7 @@ public class Entrenador {
 
     @Min(100000)
 
-    @Column(name = "cedula_entrenador", unique = true)
+    @Column(name = "cedula_entrenador")
     private Integer cedula_entrenador;
 
     @Size(min = 3, message = "whatever")

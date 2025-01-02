@@ -15,7 +15,6 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.example.demo.dto.ClubDTO;
 import com.example.demo.modelo.Club;
 import com.example.demo.servicio.ClubServicio;
 

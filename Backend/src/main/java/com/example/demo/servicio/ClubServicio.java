@@ -6,7 +6,6 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.example.demo.dto.ClubDTO;
 import com.example.demo.exencion.RecursoNoEncontradoExencion;
 import com.example.demo.modelo.Club;
 import com.example.demo.repositorio.ClubRepositorio;
@@ -40,7 +39,7 @@ public class ClubServicio implements IClub {
         // clubBD.setEntrenador(club.getEntrenador());
         club.setFechaCreacionSistema(LocalDateTime.now());
 
-       return this.clubRepositorio.save(club);
+        return this.clubRepositorio.save(club);
     }
 
     @Override
