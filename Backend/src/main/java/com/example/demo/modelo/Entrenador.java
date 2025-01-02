@@ -1,8 +1,8 @@
 package com.example.demo.modelo;
 
-import java.time.LocalDate;
 import java.time.LocalDateTime;
 
+import io.micrometer.common.lang.NonNull;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
