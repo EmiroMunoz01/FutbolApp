@@ -18,4 +18,6 @@ public interface IEntrenador {
 
     public Entrenador actualizarEntrenador(Integer id, Entrenador entrenador);
 
+    public Entrenador encontrarEntrenadorPorCedula(Integer cedula_entrenador);
+
 }

@@ -12,6 +12,7 @@ import jakarta.validation.constraints.Max;
 import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.Size;
 import lombok.AllArgsConstructor;
+import lombok.Data;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -22,6 +23,7 @@ import lombok.ToString;
 @ToString
 @AllArgsConstructor
 @NoArgsConstructor
+@Data
 
 @Entity
 @Table(name = "entrenadores")
@@ -45,7 +47,7 @@ public class Entrenador {
     @Column(name = "edad_entrenador")
     private Integer edad_entrenador;
 
-    @Min(100000)
+
 
     @Column(name = "cedula_entrenador")
     private Integer cedula_entrenador;
@@ -56,5 +58,7 @@ public class Entrenador {
 
     @Column(name = "fecha_creacion")
     private LocalDateTime fechaCreacion;
+
+   
 
 }

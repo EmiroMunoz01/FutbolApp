@@ -1,1 +1,49 @@
-<p>club-lista works!</p>
+<h2 class="mb-5">Clubes</h2>
+<button class="btn btn-dark" routerLink="/">REGRESAR AL HOME</button>
+
+<div class="text-end">
+  <button class="btn btn-primary" routerLink="/clubes/nuevo">Nuevo Club</button>
+</div>
+
+<table class="table table-hover">
+  <thead>
+    <tr>
+      <th>ID</th>
+      <th>Nombre Equipo</th>
+      <th>Pais Origen</th>
+      <th>Jugadores</th>
+      <th>Entrenador</th>
+      <th>Cedula Entrenador</th>
+      <th>Fecha de Creación</th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    @for(club of clubesArray; track club.id){
+
+    <tr>
+      <th>{{ club.id }}</th>
+      <th>{{ club.nombre }}</th>
+      <th>{{ club.paisOrigen }}</th>
+      <th>{{ club.jugadores }}</th>
+      <th>{{ club.entrenador.nombre }}</th>
+      <th>{{ club.entrenador.cedula_entrenador }}</th>
+      <th>{{ club.fechaCreacionSistema | date : "dd/MM/yyyy hh:mm a" }}</th>
+
+      <td>
+        <div class="btn-group">
+          <button
+            class="btn btn-warning"
+            [routerLink]="[club.id, 'actualizar']"
+          >
+            Editar
+          </button>
+          <button class="btn btn-danger" (click)="eliminarClub(club)">
+            Eliminar
+          </button>
+        </div>
+      </td>
+    </tr>
+    }
+  </tbody>
+</table>

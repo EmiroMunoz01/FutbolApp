@@ -22,7 +22,7 @@ public class ClubDTO {
     private String nombre;
     private String paisOrigen;
     private LocalDateTime fechaCreacionSistema;
-    private EntrenadorDTO entrenador;
+    private long entrenadorCedula;
     private List<Jugador> jugadores;
 
 }

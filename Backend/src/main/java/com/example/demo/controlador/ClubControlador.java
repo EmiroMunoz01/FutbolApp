@@ -1,5 +1,6 @@
 package com.example.demo.controlador;
 
+import java.time.LocalDateTime;
 import java.util.List;
 
 import org.slf4j.Logger;
@@ -16,7 +17,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.example.demo.modelo.Club;
+import com.example.demo.modelo.Entrenador;
 import com.example.demo.servicio.ClubServicio;
+import com.example.demo.servicio.EntrenadorServicio;
 
 @RestController
 @RequestMapping("app-futbol")
@@ -27,6 +30,9 @@ public class ClubControlador {
 
     @Autowired
     private ClubServicio clubServicio;
+
+    @Autowired
+    private EntrenadorServicio entrenadorServicio;
 
     @GetMapping("/club/{id}")
     public Club encontrarPorId(@PathVariable Integer id) {
@@ -40,7 +46,7 @@ public class ClubControlador {
     }
 
     @DeleteMapping("/club/{id}")
-    public void eliminarUsuario(@PathVariable Integer id) {
+    public void eliminarClub(@PathVariable Integer id) {
 
         Club club = clubServicio.buscarClubId(id);
         if (club != null) {
@@ -49,13 +55,21 @@ public class ClubControlador {
         } else {
             LOGGER.info("No se ha encontrado club con el id {}", id);
         }
-
     }
 
     @PostMapping("/club")
-    public Club crearEntrenador(
-            @RequestBody Club club) {
-        return clubServicio.guardarClub(club);
+    public Club crearClub(@RequestBody Club club) {
+
+        Entrenador x = entrenadorServicio.buscarEntrenadorId(club.getEntrenador().getId());
+        if (x != null) {
+            club.setEntrenador(x);
+            return clubServicio.guardarClub(club);
+
+        } else {
+            club.getEntrenador().setFechaCreacion(LocalDateTime.now());
+            return clubServicio.guardarClub(club);
+        }
+        
     }
 
     @PutMapping("/club/{id}")
@@ -65,4 +79,5 @@ public class ClubControlador {
         return clubServicio.actualizarClub(id, club);
 
     }
+
 }

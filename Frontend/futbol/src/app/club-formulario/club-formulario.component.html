@@ -1,1 +1,107 @@
-<p>club-formulario works!</p>
+<h2 class="mb-5">@if (clubValidador) { Editar }@else{ Nuevo } Club</h2>
+
+<div class="row row-cols-3 justify-content-center">
+  @if (form) {
+  <form [formGroup]="form" (ngSubmit)="guardar()">
+    <div class="mb-3">
+      <label for="nombre">Nombre Club</label>
+      <input
+        id="nombre"
+        type="text"
+        placeholder="Nombre"
+        class="form-control"
+        formControlName="nombre"
+      />
+
+      @if(form.get('nombre')?.hasError('required')){
+      <p class="invalid-feedback d-block">
+        El nombre es obligatorio, minimo de 3 caracteres.
+      </p>
+
+      }
+    </div>
+
+    <div class="mb-3">
+      <label for="paisOrigen">Pais Origen</label>
+      <input
+        id="paisOrigen"
+        type="text"
+        placeholder="Pais Origen"
+        class="form-control"
+        formControlName="paisOrigen"
+      />
+      @if(form.get('paisOrigen')?.hasError('required')){
+      <p class="invalid-feedback d-block">
+        El pais de origen es obligatorio, minimo de 3 caracteres.
+      </p>
+
+      }
+    </div>
+
+    <div class="mb-3">
+      <label for="entrenadorBloqueado">Entrenador</label>
+      <input
+        id="entrenadorBloqueado"
+        type="text"
+        placeholder="Entrenador Actual"
+        class="form-control"
+        formControlName="entrenadorBloqueado"
+        [disabled]="true"
+      />
+      @if(form.get('paisOrigen')?.hasError('required')){
+      <p class="invalid-feedback d-block">
+        El pais de origen es obligatorio, minimo de 3 caracteres.
+      </p>
+      }
+    </div>
+
+    <div class="mb-3">
+      <label for="entrenadorBloqueado">Cedula del entrenador por ID</label>
+      <input
+        id="entrenadorBloqueado"
+        type="text"
+        placeholder="Entrenador Actual"
+        class="form-control"
+        formControlName="entrenadorCedula"
+        [disabled]="true"
+      />
+      @if(form.get('paisOrigen')?.hasError('required')){
+      <p class="invalid-feedback d-block">
+        El pais de origen es obligatorio, minimo de 3 caracteres.
+      </p>
+      }
+    </div>
+
+    <div class="mb-3">
+      <label for="entrenador">Cedula Entrenador</label>
+
+      <select id="options" [(ngModel)]="selectedOption" name="option" formControlName="opcionEntrenador">
+        <option *ngFor="let entrenador of entrenadores">
+          {{ entrenador.cedula_entrenador }}
+        </option>
+      </select>
+
+      @if(form.get('entrenador')?.hasError('required')){
+      <p class="invalid-feedback d-block">
+        El entrenador es obligatorio, seleccionelo.
+      </p>
+
+      }
+    </div>
+    <!-- seleccionar-entrenador.component.html -->
+
+
+
+
+
+
+
+    <button class="btn btn-primary ms-2">
+      @if (clubValidador) { Actualizar }@else{ Crear } Club
+    </button>
+    <button type="button" class="btn btn-warning ms-2" routerLink="/clubes">
+      Cancelar
+    </button>
+  </form>
+  }
+</div>

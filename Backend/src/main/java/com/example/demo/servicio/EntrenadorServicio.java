@@ -30,7 +30,6 @@ public class EntrenadorServicio implements IEntrenador {
 
     @Override
     public Entrenador guardarEntrenador(Entrenador entrenador) {
-               
         entrenador.setFechaCreacion(LocalDateTime.now());
         return this.entrenadorRepositorio.save(entrenador);
     }
@@ -43,8 +42,9 @@ public class EntrenadorServicio implements IEntrenador {
     @Override
     public Entrenador actualizarEntrenador(Integer id, Entrenador entrenador) {
 
-        Entrenador entrenadorBaseDatos = this.entrenadorRepositorio.findById(id).orElseThrow(RecursoNoEncontradoExencion::new);
-        
+        Entrenador entrenadorBaseDatos = this.entrenadorRepositorio.findById(id)
+                .orElseThrow(RecursoNoEncontradoExencion::new);
+
         entrenadorBaseDatos.setNombre(entrenador.getNombre());
         entrenadorBaseDatos.setApellido(entrenador.getApellido());
         entrenadorBaseDatos.setEdad_entrenador(entrenador.getEdad_entrenador());
@@ -57,6 +57,11 @@ public class EntrenadorServicio implements IEntrenador {
     public void eliminarTodosEntrenadores() {
         this.entrenadorRepositorio.deleteAll();
 
+    }
+
+    @Override
+    public Entrenador encontrarEntrenadorPorCedula(Integer cedula_entrenador) {
+        return this.entrenadorRepositorio.encontrarEntrenadorPorCedula(cedula_entrenador);
     }
 
 }

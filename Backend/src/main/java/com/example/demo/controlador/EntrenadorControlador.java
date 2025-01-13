@@ -13,7 +13,6 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-import com.example.demo.dto.EntrenadorDTO;
 import com.example.demo.modelo.Entrenador;
 import com.example.demo.servicio.EntrenadorServicio;
 
@@ -51,18 +50,16 @@ public class EntrenadorControlador {
 
     }
 
-
     @DeleteMapping("/entrenadoresfuera")
     public void eliminarTodo() {
         entrenadorServicio.eliminarTodosEntrenadores();
-        
 
     }
 
     @PostMapping("/entrenador")
     public Entrenador crearEntrenador(
             @RequestBody Entrenador entrenador) {
-                
+
         return entrenadorServicio.guardarEntrenador(entrenador);
     }
 
@@ -72,6 +69,11 @@ public class EntrenadorControlador {
 
         return entrenadorServicio.actualizarEntrenador(id, entrenador);
 
+    }
+
+    @GetMapping("/entrenador-cedula/{cedulaEntrenador}")
+    public Entrenador encontrarEntrenadorPorCedula(@PathVariable Integer cedulaEntrenador) {
+        return entrenadorServicio.encontrarEntrenadorPorCedula(cedulaEntrenador);
     }
 
 }
